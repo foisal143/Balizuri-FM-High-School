@@ -2,6 +2,7 @@ import React from 'react';
 import './Home.css';
 import Founder from '../Founder/Founder';
 import Overview from '../Overview/Overview';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -15,9 +16,11 @@ const Home = () => {
               বালীজুড়ী ফাজেল মোহাম্মদ উচ্চ বিদ্যালয়
             </h1>
             <p className="md:text-2xl text-animate">স্থাপীতঃ ১৯১০</p>
-            <button className=" px-8 py-2 btn-animate my-5 rounded-md duration-200 bg-blue-400 hover:bg-blue-600">
-              About
-            </button>
+            <Link to="/gallary">
+              <button className=" px-8 py-2 btn-animate my-5 rounded-md duration-200 bg-blue-400 hover:bg-blue-600">
+                About
+              </button>
+            </Link>
           </div>
         </section>
       </div>
