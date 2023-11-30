@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Navbar from './comoponents/Navbar/Navbar';
+import { Outlet, useNavigation } from 'react-router-dom';
+import Footer from './comoponents/Footer/Footer';
+import Spiner from './comoponents/Spiner/Spiner';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 function App() {
+  const navigation = useNavigation();
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 1000,
+    });
+  }, []);
+  if (navigation.state === 'loading') {
+    return <Spiner></Spiner>;
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar></Navbar>
+
+      <div className="min-h-[calc(100vh-160px)]">
+        <Outlet />
+      </div>
+      <Footer></Footer>
     </div>
   );
 }
